@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb-smart-expense
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=smart-expense
+    networks:
+      - smart-expense-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  smart-expense-network:
+    driver: bridge
